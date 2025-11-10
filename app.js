@@ -45,26 +45,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. HTMLから audio 要素を取得
     const bgm = document.getElementById('bgm');
-    const unmuteButton = document.getElementById('unmute-button');
-    bgm.volume = 0.8;
+    
+    // (任意) 音量を少し下げる (0.0 〜 1.0)
+    bgm.volume = 0.5; 
 
-    // 2. ページ読み込みと同時に「ミュート状態で」再生
-    // (ミュート状態ならブラウザはブロックしない)
-    bgm.play().catch(error => {
-        // (基本的には成功するが、念のためエラーハンドリング)
-        console.error("ミュート再生にも失敗しました:", error);
-    });
+    // 2. model-viewer のAR状態を監視する
+    modelViewer.addEventListener('ar-status', (event) => {
+        
+        // ARセッションが開始されたかチェック
+        if (event.detail.status === 'session-started') {
+            
+            // ARが始まったら音楽を再生
+            console.log('AR開始: BGMを再生します');
+            // .play() は Promise を返すので、エラーをキャッチするのが安全
+            bgm.play().catch(error => {
+                console.error("BGMの再生に失敗しました:", error);
+            });
 
-    // 3. ミュート解除ボタンが押された時の処理
-    unmuteButton.addEventListener('click', () => {
-        if (bgm.muted) {
-            // ミュートを解除
-            bgm.muted = false;
-            unmuteButton.textContent = '🔈 サウンド OFF';
-        } else {
-            // 再度ミュートする
-            bgm.muted = true;
-            unmuteButton.textContent = '🔊 サウンド ON';
+        } else if (event.detail.status === 'session-ended') {
+            
+            // ARが終了したら音楽を一時停止
+            console.log('AR終了: BGMを停止します');
+            bgm.pause();
+            
+            // (任意) 音楽を最初まで巻き戻す
+            bgm.currentTime = 0; 
         }
     });
 
