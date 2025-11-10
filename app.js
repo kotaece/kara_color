@@ -5,22 +5,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. モデルのリスト
     const models = [
       {
-            src: 'assets/models/Astronaut.glb',      // Android用
-            iosSrc: 'assetss/models/Astronaut.usdz', // iPhone用
-            alt: '宇宙飛行士の3Dモデル',
-            poster: 'assets/posters/Astronaut.png'
+            src: 'assets/kara_color.glb',      // Android用
+            iosSrc: 'assets/kara_color.usdz', // iPhone用
+            alt: 'カラー',
+            poster: 'assets/color_texture.png'
         },
         {
-            src: 'assets/models/Horse.glb',
-            iosSrc: 'assets/models/Horse.usdz',
-            alt: '馬の3Dモデル',
-            poster: 'assets/posters/Horse.png'
-        },
-        {
-            src: 'assets/models/Robot.glb',
-            iosSrc: 'assets/models/Robot.usdz',
-            alt: 'ロボットの3Dモデル',
-            poster: 'assets/posters/Robot.png'
+            src: 'assets/kara_white.glb',
+            iosSrc: 'assets/kara_white.usdz',
+            alt: '白',
+            poster: 'assets/white_texture.png'
         }
     ];
     // 2. リストからランダムに1つ選ぶ
