@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgm = document.getElementById('bgm');
     
     // (任意) 音量を少し下げる (0.0 〜 1.0)
-    bgm.volume = 0.8; 
+    bgm.volume = 1.0; 
 
     // 2. model-viewer のAR状態を監視する
     modelViewer.addEventListener('ar-status', (event) => {
