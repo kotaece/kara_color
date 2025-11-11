@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
             poster: 'assets/color_texture.png'
         },
         {
+            src: 'assets/kara_color2.glb',
+            iosSrc: 'assets/kara_color2.usdz',
+            alt: 'カラー２',
+            poster: 'assets/color_texture2.png'
+        },
+        {
             src: 'assets/kara_white.glb',
             iosSrc: 'assets/kara_white.usdz',
             alt: '白',
